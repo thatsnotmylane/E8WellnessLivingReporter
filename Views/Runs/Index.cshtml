@@ -1,0 +1,31 @@
+﻿@{
+    ViewData["Title"] = "Random Number Generator";
+    var randomNumbers = ViewData["RandomNumbers"] as List<int>;
+    var runRecords = ViewData["RunRecords"] as List<string>;
+}
+
+<h2>Random Number Generator</h2>
+
+<form asp-action="GenerateNumbers" method="post">
+    <button type="submit">Generate Numbers</button>
+</form>
+
+@if (randomNumbers != null && randomNumbers.Any())
+{
+    <ul>
+        @foreach (var number in randomNumbers)
+        {
+            <li>@number</li>
+        }
+    </ul>
+}
+
+@if (runRecords != null && runRecords.Any() == true)
+{
+    <ul>
+        @foreach (var run in runRecords)
+        {
+            <li>@run</li>
+        }
+    </ul>
+}

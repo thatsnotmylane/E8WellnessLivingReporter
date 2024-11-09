@@ -2,6 +2,8 @@
 @model IndexModel
 @{
     ViewData["Title"] = "Home page";
+
+    var randomNumbers = ViewData["RandomNumbers"] as List<int>;
 }
 
 <div class="text-center">
@@ -12,3 +14,25 @@
 <a class="btn btn-primary" asp-controller="Account" asp-action="GoogleLogin">
     Login with Google
 </a>
+
+
+
+<form asp-controller="Runs" asp-action="ListRun" method="post">
+    <button type="submit">List Runs</button>
+</form>
+
+
+@* <form asp-controller="Runs" asp-action="GenerateNumbers" method="post">
+    <button type="submit">Generate Numbers</button>
+</form>
+ *@
+
+@if (randomNumbers != null && randomNumbers.Any())
+{
+    <ul>
+        @foreach (var number in randomNumbers)
+        {
+            <li>@number</li>
+        }
+    </ul>
+}
